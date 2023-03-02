@@ -1,0 +1,29 @@
+@import '~bootstrap/scss/bootstrap';
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+div.home-card {
+    border: 1px solid black;
+}
+
+div.git-hover:hover {
+    transform: scale(1.2);
+}
+
+section#dashboard {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 1rem;
+}
+
+div.single-repo {
+    width: 250px;
+    background-color: rgb(247, 247, 247);
+    padding: 2rem .5rem;
+    border-radius: 1rem;
+}
+
+div.line-separator {
+    width: 80%;
+    height: 1.5px;
+    background-color: rgb(190, 190, 190);
+    margin: 50px auto;
+}
