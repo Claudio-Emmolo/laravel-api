@@ -37,7 +37,7 @@ class ProjectsTableSeeder extends Seeder
             $newProject->url = $faker->url();
             $newProject->date = $faker->dateTime();
             $newProject->preview_img = $faker->imageUrl(600, 600);
-            $newProject->difficulty = $faker->randomDigit();
+            $newProject->difficulty = $faker->numberBetween(1, 5);
             // $newProject->tecnologies = $faker->word(5);
             $newProject->save();
         }

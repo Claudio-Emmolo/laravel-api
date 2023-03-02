@@ -96,9 +96,8 @@ class ProjectController extends Controller
 
         $newProject->save();
 
-        if (isset($data['tecnologies'])) {
-            $newProject->technologies()->sync($data['tecnologies']);
-        }
+        $newProject->technologies()->sync($data['tecnologies'] ?? []);
+
 
 
         return redirect()->route('admin.projects.index', compact('newProject'));
@@ -152,15 +151,14 @@ class ProjectController extends Controller
         };
 
         //Upload IMG
-        $editData['preview_img'] = Storage::put('uploads', $editData['preview_img']);
+        if (isset($editData['preview_img'])) {
+            $editData['preview_img'] = Storage::put('uploads', $editData['preview_img']);
+        }
 
         $project->update($editData);
 
-        if (isset($data['tecnologies'])) {
-            $project->technologies()->sync($editData['tecnologies']);
-        } else {
-            $project->technologies()->sync([]);
-        }
+        $project->technologies()->sync($editData['tecnologies'] ?? []);
+
 
 
         return redirect()->route('admin.projects.index', compact('project'))->with('message', 'Project has been modified')->with('type', 'success');
@@ -209,10 +207,11 @@ class ProjectController extends Controller
     public function forceDelete(Project $project)
     {
         //Check if IMG or URL
-        if (!$project->isImageUrl()) {
+        if (!$project->isImageUrl() && $project->preview_img != null) {
             // Delete Img
             Storage::delete($project->preview_img);
         }
+
         $project->forceDelete();
         return redirect()->route('admin.projects.index')->with('message', 'Project has been permanently deleted')->with('type', 'warning');
     }
