@@ -145,7 +145,7 @@ class ProjectController extends Controller
         //remove exist img
         if ($request->hasFile('preview_img')) {
             //Check if IMG or URL
-            if (!$project->isImageUrl()) {
+            if (!$project->isImageUrl() && $project->preview_img != null) {
                 Storage::delete($project->preview_img);
             }
         };
