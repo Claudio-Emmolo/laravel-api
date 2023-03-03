@@ -59,6 +59,17 @@
     </div>
 
     <div class="mb-3">
+        <label for="description" class="form-label">Project Description*</label>
+        <input type="description" class="form-control @error('description') is-invalid @enderror" id="description"
+            name="description" value="{{ old('description', $project->description) }}">
+        <div class="text-danger">
+            @error('description')
+                {{ $message }}
+            @enderror
+        </div>
+    </div>
+
+    <div class="mb-3">
         <label for="date" class="form-label">Project Date*</label>
         <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date"
             value="{{ old('date', $project->date) }}">

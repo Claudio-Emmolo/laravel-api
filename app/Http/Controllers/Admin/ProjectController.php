@@ -17,6 +17,7 @@ class ProjectController extends Controller
     public $validator = [
         "type_id" => "nullable|exists:types,id",
         "title" => "required|unique:Projects|string|min:2|max:100",
+        "description" => "required|string|max:255",
         "url" => "required|url",
         "date" => "required|date",
         "preview_img" => "nullable|image",
@@ -33,7 +34,9 @@ class ProjectController extends Controller
         "title.min" => 'Inserisci almeno due caratteri',
         "title.max" => 'Limite di carettiri superato (100)',
 
-
+        "description.required" => 'Inserire una descrizione',
+        "description.string" => 'Il campo deve contenere una stringa',
+        "description.max" => 'Limite di carettiri superato (255)',
 
         "url.required" => 'Inserire un URL',
         "url.url" => 'URL non valido',
@@ -84,7 +87,6 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $data = $request->validate($this->validator, $this->errorMessage);
         $newProject = new Project();
         $newProject->fill($data);

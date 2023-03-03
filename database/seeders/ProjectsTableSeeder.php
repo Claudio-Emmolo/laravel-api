@@ -34,6 +34,7 @@ class ProjectsTableSeeder extends Seeder
             $newProject = new Project();
             $newProject->type_id = Type::inRandomOrder()->first()->id;
             $newProject->title = $faker->unique()->sentence(4);
+            $newProject->description = $faker->text(255);
             $newProject->url = $faker->url();
             $newProject->date = $faker->dateTime();
             $newProject->preview_img = $faker->imageUrl(600, 600);
