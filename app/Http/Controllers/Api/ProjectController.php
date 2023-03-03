@@ -17,4 +17,14 @@ class ProjectController extends Controller
             'results' => $project,
         ]);
     }
+
+    public function show(Project $project)
+    {
+        $project = Project::with('type', 'technologies')->findOrFail($project->id);
+
+        return response()->json([
+            'success' => true,
+            'results' => $project,
+        ]);
+    }
 }
