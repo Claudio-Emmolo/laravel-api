@@ -36,7 +36,7 @@ class ProjectController extends Controller
 
         "description.required" => 'Inserire una descrizione',
         "description.string" => 'Il campo deve contenere una stringa',
-        "description.max" => 'Limite di carettiri superato (255)',
+        "description.max" => 'Limite di caretteri superato (255)',
 
         "url.required" => 'Inserire un URL',
         "url.url" => 'URL non valido',

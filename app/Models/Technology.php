@@ -9,6 +9,8 @@ class Technology extends Model
 {
     use HasFactory;
 
+    protected $fillable = array('name', 'color_tag');
+
     // Function for connect Technologies to many Projects
     public function projects()
     {

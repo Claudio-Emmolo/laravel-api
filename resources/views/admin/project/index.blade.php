@@ -8,6 +8,9 @@
         <div id="alert_popUp" class="d-none" data-type="{{ session('type') }}" data-message="{{ session('message') }}"></div>
     @endif
 
+    <h1 class="text-center mt-3">Projects</h1>
+
+
     <table class="table container mt-5 table-hover table-bordered">
         <thead class="text-center">
             <tr>
