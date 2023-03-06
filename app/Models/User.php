@@ -29,6 +29,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    // Function for connect Users table to many projects
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

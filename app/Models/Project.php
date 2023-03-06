@@ -19,17 +19,18 @@ class Project extends Model
         return $this->belongsTo(Type::class);
     }
 
+    // Function for connect Projects table to one user
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     // Function for connect Projects table to many Technologies
     public function technologies()
     {
         return $this->belongsToMany(Technology::class);
     }
 
-        // Function for connect Projects table to many Roles
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
 
     public function isImageUrl()
     {
