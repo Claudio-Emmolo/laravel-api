@@ -22,6 +22,14 @@ class RoleTableSeeder extends Seeder
             ],
             [
                 "level" => 2,
+                "name" => 'Editor'
+            ],
+            [
+                "level" => 3,
+                "name" => 'Vip User'
+            ],
+            [
+                "level" => 4,
                 "name" => 'User'
             ],
         ];
