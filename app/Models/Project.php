@@ -25,6 +25,12 @@ class Project extends Model
         return $this->belongsToMany(Technology::class);
     }
 
+        // Function for connect Projects table to many Roles
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
     public function isImageUrl()
     {
         return filter_var($this->preview_img, FILTER_VALIDATE_URL);

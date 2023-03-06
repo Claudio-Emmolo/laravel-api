@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             TypesTableSeeder::class,
             ProjectsTableSeeder::class,
+            RoleTableSeeder::class,
+            //RoleUserTable
             TechnologyTableSeeder::class,
             ProjectTechnologyTableSeeder::class,
         ]);
