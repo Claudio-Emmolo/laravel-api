@@ -69,10 +69,11 @@
             @endforelse
         </tbody>
     </table>
-    <div class="container">
-        {{ $projectList->links() }}
-    </div>
-
+    @if ($projectList != [])
+        <div class="container">
+            {{ $projectList->links() }}
+        </div>
+    @endif
 
 @endsection
 

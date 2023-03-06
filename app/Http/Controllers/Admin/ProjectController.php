@@ -9,6 +9,7 @@ use App\Models\Type;
 use Dotenv\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -63,9 +64,12 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
-        $projectList = Project::orderBy('date', 'desc')->paginate(8);
-
         $trashCount = Project::onlyTrashed()->count();
+        if (Auth::user()->roles()->pluck('id')->contains(1) || Auth::user()->roles()->pluck('id')->contains(2)) {
+            $projectList = Project::orderBy('date', 'desc')->paginate(8);
+        } else {
+            $projectList = [];
+        }
         return view('admin.project.index', compact('projectList', 'trashCount'));
     }
 
