@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/projects', [ApiProjectController::class, 'index'])->name('api.project.index');
-Route::get('/projects/{project}', [ApiProjectController::class, 'show'])->name('api.project.show');
+Route::middleware('auth:api')->get('/projects', [ApiProjectController::class, 'index'])->name('api.project.index');
+Route::middleware('auth:api')->get('/projects/{project}', [ApiProjectController::class, 'show'])->name('api.project.show');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
