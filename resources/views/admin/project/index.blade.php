@@ -18,6 +18,11 @@
                 <th scope="col">URL</th>
                 <th scope="col">Date</th>
                 <th scope="col">Difficulty</th>
+
+                @if (Auth::user()->roles()->pluck('id')->contains(1) ||
+                        Auth::user()->roles()->pluck('id')->contains(2))
+                    <th scope="col">Created by</th>
+                @endif
                 <th class="text-end">
                     @if ($trashCount > 0)
                         <a href="{{ route('admin.trash') }}" class="btn btn-dark">
@@ -49,6 +54,12 @@
                             ({{ $project->difficulty }})
                         </span>
                     </td>
+
+                    @if (Auth::user()->roles()->pluck('id')->contains(1) ||
+                            Auth::user()->roles()->pluck('id')->contains(2))
+                        <td scope="col">{{ $project->user->name }}</td>
+                    @endif
+
                     <td class="text-end">
                         <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary"><i
                                 class="fa-solid fa-eye"></i></a>

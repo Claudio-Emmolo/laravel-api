@@ -68,7 +68,7 @@ class ProjectController extends Controller
         if (Auth::user()->roles()->pluck('id')->contains(1) || Auth::user()->roles()->pluck('id')->contains(2)) {
             $projectList = Project::orderBy('date', 'desc')->paginate(8);
         } else {
-            $projectList = [];
+            $projectList = Project::where('user_id', Auth::user()->id)->orderBy('date', 'desc')->paginate(8);
         }
         return view('admin.project.index', compact('projectList', 'trashCount'));
     }
@@ -94,6 +94,7 @@ class ProjectController extends Controller
         $data = $request->validate($this->validator, $this->errorMessage);
         $newProject = new Project();
         $newProject->fill($data);
+        $newProject['user_id'] = Auth::user()->id;
 
         //Upload IMG
         if (isset($data['preview_img'])) {
